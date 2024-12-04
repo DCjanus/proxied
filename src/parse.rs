@@ -87,7 +87,8 @@ impl FromStr for Proxy {
                 Some((login.to_owned(), password.to_owned()))
             }
         };
-        let addr = input_stack.remove(0).to_string();
+        // TODO(DCjanus): 临时修复，待优化
+        let addr = input_stack.remove(0).to_string().trim_start_matches("//").to_string();
         let port: u16 = input_stack
             .remove(0)
             .parse()
